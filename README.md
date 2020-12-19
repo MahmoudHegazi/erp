@@ -20,19 +20,19 @@ Python3, HTML5, CSS3, ES6, Flask, Flask SQLAlchemy, Jinja2, AJAX(Fetch)
 localhost:5000/
 
 ## Routes Accept Get Request and Return JSON result None AJAX:
-* .
+*
 /add_employee/<string:employee_code>/<string:employee_name>
 localhost:5000/add_employee/emp01/mahmoud
 
-* .
+*
 /get_history/<string:employee_code>
 localhost:5000/get_history/emp01
 
-* . 
+*
 /get_attendance/<string:employee_code>/<string:date>
 localhost:5000//get_attendance/emp01/2020-12-19
 
-* .
+*
 /get_history_normal/<string:employee_code>
 localhost:5000/get_history_normal/emp01
 
