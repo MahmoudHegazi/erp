@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ERP Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="static/script.js"></script>
+  <style>
+body {
+  background-color:rgb(245, 245, 245);
+
+
+}
+
+.submit_btn  {
+  background-color: crimson;
+  color: white;
+  border: 1px solid white;
+  border-radius: 7%;
+  padding: 5px;
+  cursor: pointer
+}
+
+.submit_btn:hover {
+  background-color: black;
+}
+
+.container_a {
+  display: flex;
+
+}
+
+
+  </style>
+</head>
+<body>
+
+
+<!-- I could Use bootstrap but I did not -->
+<div id="notification_message">
+
+</div>
+
+<h1 style="text-align:center;">Dashboard</h1><br />
+
+  <! -- notification_message end -->
+<h2 class="header_text">Add New Employee</h2>
+<div class="container_a">
+  <form id="add_employee" action='/add_employee_normal' method='post'>
+    <label for='employee_code_employee'>Employe Code: </label>
+    <input type="text" class="select_employee" name="employee_code_employee" id="employee_code_employee">
+    <label for='employee_name'>Employe Name: </label>
+    <input type="text" class="select_employee" name="employee_name" id="employee_name">
+    <input class="submit_btn" type="submit" value="Add New Employee">
+  </form>
+
+</div>
+<br /><br /><hr />
+
+
+<h2 class="header_text">Check In AJAX</h2>
+<form id="checkin_form">
+<select class="select_employee" name="employee_code_in" id="employee_code_in">
+  {% if employees %}
+    {% for employee in employees %}
+      <option value="{{employee.employee_code}}">{{employee.name}} ({{employee.employee_code}})</option>
+    {% endfor %}
+  {% else %}
+    <option value="" disabled="disabled">0 Employess</option>
+  {% endif %}
+</select>
+<input class="submit_btn" type="submit" value="Checkin">
+</form>
+
+<br /><br /><hr />
+
+<h2 class="header_text">Check Out AJAX</h2>
+<form id="checkout_form">
+<select class="select_employee" name="employee_code_out" id="employee_code_out">
+  {% if employees %}
+    {% for employee in employees %}
+      <option value="{{employee.employee_code}}">{{employee.name}} ({{employee.employee_code}})</option>
+    {% endfor %}
+  {% else %}
+    <option value="" disabled="disabled">0 Employess</option>
+  {% endif %}
+</select>
+<input  class="submit_btn" type="submit" value="Checkout">
+</form>
+
+
+<br /><br /><hr />
+
+
+
+<h2 class="header_text" >Get History ISO</h2>
+<form id="get_history_ajax" action='/get_history_ajax' method='post'>
+<select class="select_employee" name="employee_code_history" id="employee_code_history">
+  {% if employees %}
+    {% for employee in employees %}
+      <option value="{{employee.employee_code}}">{{employee.name}} ({{employee.employee_code}})</option>
+    {% endfor %}
+  {% else %}
+    <option value="" disabled="disabled">0 Employess</option>
+  {% endif %}
+</select>
+<input class="submit_btn" type="submit" value="Get History">
+</form>
+
+<br /><br /><hr />
+
+
+
+<h2 class="header_text" >Get History Egypt</h2>
+<form id="get_history_ajax1" action='/get_history_ajax1' method='post'>
+<select class="select_employee" name="employee_code_history1" id="employee_code_history1">
+  {% if employees %}
+    {% for employee in employees %}
+      <option value="{{employee.employee_code}}">{{employee.name}} ({{employee.employee_code}})</option>
+    {% endfor %}
+  {% else %}
+    <option value="" disabled="disabled">0 Employess</option>
+  {% endif %}
+</select>
+<input class="submit_btn" type="submit" value="Get History">
+</form>
+
+
+<br /><br /><hr />
+
+
+<h2 class="header_text" >Check day attendance for employee</h2>
+<form id="get_attendance1" action='/get_attendance1' method='post'>
+<select class="select_employee" name="employee_code_attendance" id="employee_code_attendance">
+  {% if employees %}
+    {% for employee in employees %}
+      <option value="{{employee.employee_code}}">{{employee.name}} ({{employee.employee_code}})</option>
+    {% endfor %}
+  {% else %}
+    <option value="" disabled="disabled">0 Employess</option>
+  {% endif %}
+</select>
+<input type="date" name="the_date">
+<input class="submit_btn" type="submit" value="Get History">
+</form>
+
+
+<br /><br /><br /><hr />
+
+<h2>This Links For the Quiz IT take the paramters as query String</h2>
+
+<h3>01 Check day attendance for employee</h3>
+<code>Link example: localhost:5000/get_attendance/employee_code/date</code> <br> <code>localhost:5000/get_history/emp01/2020-12-19</code>
+<br /><br /><hr />
+<h3>02 Retrieve attendance history for employee</h3>
+
+<code>Link example1: localhost:5000/get_history/employee_code</code><br> <code>localhost:5000/get_history/emp01</code><br /><br />
+<code>Link example2: localhost:5000/get_history_normal/employee_code</code>
+
+
+<h3>This To add New Employee required step</h3>
+<code>Link example: localhost:5000/add_employee/employee_code/employee_name</code><br>
+<code>localhost:5000/add_employee/emp01/mahmoud</code><br /><br />
+</body>
+</html>
